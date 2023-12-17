@@ -45,7 +45,7 @@ class PostDetail(View):
 
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
-            comment_form.isstance.name = request.user.username
+            comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
@@ -59,7 +59,8 @@ class PostDetail(View):
                     "post": post,
                     "comments": comments,
                     "commented": True,
+                    "comment_form": CommentForm,
                     "liked": liked,
-                    "comment_form": CommentForm()
+                    
             },
         )
